@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ahmad Mosis – IT-Systemadministrator · Cloud</title>
+<meta name="description" content="Ahmad Mosis – IT-Systemadministrator und Cloud Engineer (Azure & AWS) in Paderborn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070b16; --bg2:#0c1324; --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.09);
+  --tx:#e8edf7; --mut:#93a0b8; --az:#3b9cff; --aws:#ff9f1c; --ok:#38d39f; --vio:#8b7bff;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+[data-en]{display:none}
+html[lang=en] [data-de]{display:none}
+html[lang=en] [data-en]{display:revert}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;backdrop-filter:blur(14px);background:rgba(7,11,22,.6);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:Sora;font-weight:800;letter-spacing:.5px}
+.logo b{color:var(--az)}
+.links{display:flex;gap:26px;font-size:14px;color:var(--mut)}
+.links a:hover{color:var(--tx)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.lang button{all:unset;cursor:pointer;font:600 12px Inter;padding:6px 12px;border-radius:999px;color:var(--mut)}
+.lang button.on{background:var(--az);color:#fff}
+@media(max-width:820px){.links{display:none}}
+
+/* hero */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;overflow:hidden}
+#globe{position:absolute;inset:0;z-index:0}
+.glow{position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.28;z-index:0;pointer-events:none}
+.g1{background:var(--az);top:-160px;right:-120px}.g2{background:var(--vio);bottom:-260px;left:-200px;opacity:.18}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .9fr;gap:60px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mut);border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(56,211,159,.18);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(56,211,159,0)}}
+h1{font-size:clamp(42px,6.4vw,76px);font-weight:800;letter-spacing:-1.5px}
+h1 span{background:linear-gradient(100deg,var(--az),var(--vio) 55%,var(--aws));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:clamp(18px,2.2vw,22px);color:var(--mut);margin:16px 0 26px;font-weight:500}
+.lead{max-width:560px;color:#c3cbdb}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;transition:.25s}
+.btn.p{background:var(--az);color:#fff;box-shadow:0 10px 30px -10px var(--az)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px var(--az)}
+.btn.s{border:1px solid var(--line);background:var(--card)}
+.btn.s:hover{border-color:rgba(255,255,255,.25)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.mini{font:600 12px Inter;padding:6px 11px;border-radius:8px;border:1px solid var(--line);color:var(--mut);cursor:pointer;transition:.2s;background:transparent}
+.mini:hover{color:#fff;border-color:var(--az)}
+.mini.aws:hover{border-color:var(--aws)}
+
+.photo-3d{perspective:1100px;justify-self:center}
+.photo{position:relative;width:min(360px,74vw);aspect-ratio:1/1.1;border-radius:28px;transform-style:preserve-3d;transition:transform .15s ease-out}
+.photo img{width:100%;height:100%;object-fit:cover;border-radius:28px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+.photo::before{content:"";position:absolute;inset:-2px;border-radius:30px;background:linear-gradient(140deg,var(--az),transparent 40%,transparent 60%,var(--aws));z-index:-1;transform:translateZ(-1px)}
+.float{position:absolute;transform:translateZ(60px);background:rgba(12,19,36,.85);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.f1{top:8%;left:-14%}.f2{bottom:12%;right:-12%}.f3{bottom:-5%;left:6%}
+.f1 i,.f2 i,.f3 i{font-style:normal;font-size:16px}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:50px}.photo-3d{order:-1}.f1{left:-4%}.f2{right:-4%}}
+
+/* sections */
+section{padding:100px 0;position:relative}
+.eyebrow{font:600 13px Inter;letter-spacing:2.5px;text-transform:uppercase;color:var(--az);margin-bottom:12px}
+h2{font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-.6px;margin-bottom:14px}
+.sub{color:var(--mut);max-width:640px;margin-bottom:46px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* cert cards */
+.certs{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:1000px){.certs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.certs{grid-template-columns:1fr}}
+.tilt{perspective:900px}
+.cert{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;height:100%;width:100%;padding:26px 22px;border-radius:var(--r);background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border:1px solid var(--line);transform-style:preserve-3d;transition:transform .12s ease-out,border-color .3s;position:relative;overflow:hidden}
+.cert::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.12),transparent 45%);opacity:0;transition:.3s;pointer-events:none}
+.cert:hover::after{opacity:1}
+.cert:hover{border-color:var(--c)}
+.cert:focus-visible{outline:2px solid var(--c)}
+.shield{width:58px;height:66px;transform:translateZ(40px);margin-bottom:22px}
+.code{font:800 26px Sora;color:var(--c);transform:translateZ(30px)}
+.cert h3{font-size:16px;font-weight:600;margin:6px 0 10px;transform:translateZ(20px)}
+.meta{font-size:13px;color:var(--mut);margin-top:auto}
+.open{display:flex;align-items:center;gap:6px;font:600 13px Inter;color:var(--c);margin-top:16px}
+.open svg{transition:.25s}.cert:hover .open svg{transform:translateX(4px)}
+.verify{margin-top:24px;font-size:14px;color:var(--mut)}
+.verify a{color:var(--az);border-bottom:1px solid rgba(59,156,255,.35)}
+
+/* timeline */
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--az),var(--vio),transparent)}
+.job{position:relative;margin-bottom:22px;padding:24px 26px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
+.job::before{content:"";position:absolute;left:-32px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--az)}
+.job .when{font:600 13px Inter;color:var(--az)}
+.job h3{font-size:19px;margin:6px 0 2px}
+.job .org{color:var(--mut);font-size:14px;margin-bottom:10px}
+.job ul{list-style:none;color:#c3cbdb;font-size:15px}
+.job li{padding-left:18px;position:relative;margin:4px 0}
+.job li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:2px;background:var(--az);opacity:.7}
+.docbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px Inter;color:#fff;padding:8px 14px;border-radius:10px;background:rgba(59,156,255,.14);border:1px solid rgba(59,156,255,.4);transition:.2s}
+.docbtn:hover{background:rgba(59,156,255,.28)}
+
+/* edu + lang grid */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.panel{padding:28px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
+.panel h3{font-size:20px;margin-bottom:6px}
+.panel .org{color:var(--mut);font-size:14px}
+.panel p{color:#c3cbdb;margin-top:12px;font-size:15px}
+.hl{display:inline-block;margin-top:14px;font:600 13px Inter;color:var(--ok);background:rgba(56,211,159,.1);border:1px solid rgba(56,211,159,.3);padding:6px 12px;border-radius:8px}
+.langs{display:grid;gap:14px;margin-top:6px}
+.lrow{display:grid;grid-template-columns:110px 1fr auto;gap:14px;align-items:center;font-size:15px}
+.bar{height:6px;border-radius:6px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--az),var(--vio));transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.lrow small{color:var(--mut);font-size:13px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.skills{grid-template-columns:1fr}}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{font-size:13px;padding:6px 11px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:#cdd5e4}
+.ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;margin-bottom:14px;background:rgba(59,156,255,.12)}
+
+/* projects */
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.proj{grid-template-columns:1fr}}
+.proj .panel{position:relative;overflow:hidden}
+.proj .panel .yr{position:absolute;right:22px;top:20px;font:700 13px Sora;color:var(--mut)}
+
+/* contact */
+#kontakt .box{padding:56px 44px;border-radius:26px;background:linear-gradient(140deg,rgba(59,156,255,.16),rgba(139,123,255,.1) 50%,rgba(255,159,28,.08));border:1px solid var(--line);text-align:center}
+.clist{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.clist a,.clist span{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:12px;background:rgba(7,11,22,.55);border:1px solid var(--line);font-weight:500;font-size:15px}
+.clist a:hover{border-color:var(--az)}
+footer{padding:36px 0 50px;text-align:center;color:var(--mut);font-size:13px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(3,6,14,.82);backdrop-filter:blur(10px)}
+.modal.on{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.mbox{width:min(1000px,100%);max-height:calc(100vh - 40px);display:flex;flex-direction:column;background:var(--bg2);border:1px solid var(--line);border-radius:20px;overflow:hidden;animation:pop .35s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{transform:perspective(900px) rotateX(12deg) scale(.92);opacity:0}}
+.mhead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.mhead h3{font-size:16px}
+.mhead small{color:var(--mut);display:block;font:500 13px Inter;margin-top:2px}
+.x{all:unset;cursor:pointer;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--line);flex:none}
+.x:hover{background:rgba(255,255,255,.08)}
+.mbody{overflow:auto;background:#0a0f1c;padding:18px;display:flex;justify-content:center}
+.mbody img{max-height:72vh;width:auto;border-radius:8px;cursor:zoom-in;box-shadow:0 20px 50px -20px #000}
+.mbody.zoom img{max-height:none;width:100%;cursor:zoom-out}
+.mfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--line);font-size:14px;flex-wrap:wrap}
+.pager{display:flex;align-items:center;gap:8px;color:var(--mut)}
+.pager button{all:unset;cursor:pointer;padding:6px 12px;border-radius:8px;border:1px solid var(--line)}
+.pager button:disabled{opacity:.3;cursor:default}
+.mfoot a{color:var(--az);font-weight:600}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="logo" href="#hero">AHMAD<b>.</b>MOSIS</a>
+  <div class="links">
+    <a href="#zertifikate"><span data-de>Zertifikate</span><span data-en>Certifications</span></a>
+    <a href="#erfahrung"><span data-de>Erfahrung</span><span data-en>Experience</span></a>
+    <a href="#bildung"><span data-de>Bildung</span><span data-en>Education</span></a>
+    <a href="#skills">Skills</a>
+    <a href="#kontakt"><span data-de>Kontakt</span><span data-en>Contact</span></a>
+  </div>
+  <div class="lang" role="group" aria-label="Sprache / Language">
+    <button id="bde" class="on" onclick="setLang('de')">DE</button>
+    <button id="ben" onclick="setLang('en')">EN</button>
+  </div>
+</div></nav>
+
+<header id="hero">
+  <canvas id="globe" aria-hidden="true"></canvas>
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill"><span class="dot"></span>
+        <span data-de>Offen für neue Aufgaben · Paderborn & Remote</span>
+        <span data-en>Open to new roles · Paderborn & remote</span>
+      </div>
+      <h1>Ahmad <span>Mosis</span></h1>
+      <p class="role">
+        <span data-de>IT-Systemadministrator · Cloud Engineer (Azure & AWS)</span>
+        <span data-en>IT System Administrator · Cloud Engineer (Azure & AWS)</span>
+      </p>
+      <p class="lead">
+        <span data-de>Computer Engineer mit von der ZAB bewertetem Hochschulabschluss, vier Cloud-Zertifizierungen und Praxis mit Windows Server, Active Directory und VMware. Ich suche den Einstieg in ein IT-Team, in dem ich Verantwortung übernehme und weiter dazulerne.</span>
+        <span data-en>Computer engineer with a ZAB-evaluated university degree, four cloud certifications and hands-on practice with Windows Server, Active Directory and VMware. Looking for an IT team where I can take ownership and keep growing.</span>
+      </p>
+      <div class="cta">
+        <a class="btn p" href="#kontakt"><span data-de>Kontakt aufnehmen</span><span data-en>Get in touch</span> →</a>
+        <a class="btn s" href="#zertifikate"><span data-de>Zertifikate ansehen</span><span data-en>View certificates</span></a>
+      </div>
+      <div class="badges">
+        <button class="mini" onclick="openDoc('az104')">AZ-104</button>
+        <button class="mini" onclick="openDoc('az305')">AZ-305</button>
+        <button class="mini aws" onclick="openDoc('saa')">SAA-C03</button>
+        <button class="mini aws" onclick="openDoc('clf')">CLF-C02</button>
+        <button class="mini" onclick="openDoc('b2')">Deutsch B2</button>
+      </div>
+    </div>
+    <div class="photo-3d">
+      <div class="photo" id="photo">
+        <img src="photo.jpg" alt="Ahmad Mosis">
+        <div class="float f1"><i>☁️</i> Azure · AWS</div>
+        <div class="float f2"><i>🎓</i> <span data-de>ZAB-bewertet</span><span data-en>ZAB-evaluated</span></div>
+        <div class="float f3"><i>🗣️</i> <span data-de>5 Sprachen</span><span data-en>5 languages</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="zertifikate"><div class="wrap">
+  <p class="eyebrow reveal"><span data-de>Zertifizierungen</span><span data-en>Certifications</span></p>
+  <h2 class="reveal"><span data-de>Geprüft bei Microsoft und AWS</span><span data-en>Certified by Microsoft and AWS</span></h2>
+  <p class="sub reveal"><span data-de>Klicken Sie auf eine Karte, um das Original-Zertifikat zu sehen.</span><span data-en>Click a card to view the original certificate.</span></p>
+  <div class="certs">
+    <div class="tilt reveal"><button class="cert" style="--c:var(--az)" onclick="openDoc('az104')">
+      <svg class="shield" viewBox="0 0 58 66"><path d="M29 2 54 12v20c0 16-11 27-25 32C15 59 4 48 4 32V12Z" fill="#0f2a52" stroke="#3b9cff" stroke-width="2.5"/><text x="29" y="40" text-anchor="middle" fill="#fff" font-family="Sora" font-weight="800" font-size="13">★★</text></svg>
+      <div class="code">AZ-104</div>
+      <h3>Azure Administrator Associate</h3>
+      <div class="meta"><span data-de>Microsoft · erworben 09/2025</span><span data-en>Microsoft · earned 09/2025</span></div>
+      <div class="open"><span data-de>Zertifikat öffnen</span><span data-en>Open certificate</span><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+    </button></div>
+    <div class="tilt reveal"><button class="cert" style="--c:var(--vio)" onclick="openDoc('az305')">
+      <svg class="shield" viewBox="0 0 58 66"><path d="M29 2 54 12v20c0 16-11 27-25 32C15 59 4 48 4 32V12Z" fill="#1d1a4d" stroke="#8b7bff" stroke-width="2.5"/><text x="29" y="40" text-anchor="middle" fill="#fff" font-family="Sora" font-weight="800" font-size="12">★★★</text></svg>
+      <div class="code">AZ-305</div>
+      <h3>Azure Solutions Architect Expert</h3>
+      <div class="meta"><span data-de>Microsoft · erworben 09/2025</span><span data-en>Microsoft · earned 09/2025</span></div>
+      <div class="open"><span data-de>Zertifikat öffnen</span><span data-en>Open certificate</span><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+    </button></div>
+    <div class="tilt reveal"><button class="cert" style="--c:var(--aws)" onclick="openDoc('saa')">
+      <svg class="shield" viewBox="0 0 58 66"><path d="M29 2 54 12v20c0 16-11 27-25 32C15 59 4 48 4 32V12Z" fill="#3a2410" stroke="#ff9f1c" stroke-width="2.5"/><text x="29" y="39" text-anchor="middle" fill="#fff" font-family="Sora" font-weight="800" font-size="11">AWS</text></svg>
+      <div class="code">SAA-C03</div>
+      <h3>AWS Solutions Architect – Associate</h3>
+      <div class="meta"><span data-de>Amazon Web Services · 03/2026 – 03/2029</span><span data-en>Amazon Web Services · 03/2026 – 03/2029</span></div>
+      <div class="open"><span data-de>Zertifikat öffnen</span><span data-en>Open certificate</span><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+    </button></div>
+    <div class="tilt reveal"><button class="cert" style="--c:var(--aws)" onclick="openDoc('clf')">
+      <svg class="shield" viewBox="0 0 58 66"><path d="M29 2 54 12v20c0 16-11 27-25 32C15 59 4 48 4 32V12Z" fill="#3a2410" stroke="#ff9f1c" stroke-width="2.5"/><text x="29" y="39" text-anchor="middle" fill="#fff" font-family="Sora" font-weight="800" font-size="11">AWS</text></svg>
+      <div class="code">CLF-C02</div>
+      <h3>AWS Certified Cloud Practitioner</h3>
+      <div class="meta"><span data-de>Amazon Web Services · 03/2026 – 03/2029</span><span data-en>Amazon Web Services · 03/2026 – 03/2029</span></div>
+      <div class="open"><span data-de>Zertifikat öffnen</span><span data-en>Open certificate</span><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+    </button></div>
+  </div>
+  <p class="verify reveal"><span data-de>Alle Badges sind öffentlich überprüfbar auf</span><span data-en>All badges can be verified publicly on</span> <a href="https://www.credly.com/users/ahmad-mosis" target="_blank" rel="noopener">Credly ↗</a></p>
+</div></section>
+
+<section id="erfahrung"><div class="wrap">
+  <p class="eyebrow reveal"><span data-de>Berufserfahrung</span><span data-en>Experience</span></p>
+  <h2 class="reveal"><span data-de>Mein Weg bisher</span><span data-en>My path so far</span></h2>
+  <p class="sub reveal"><span data-de>IT-Erfahrung im Ausland, danach Verantwortung in Deutschland – im Betrieb, im Team und mit Menschen.</span><span data-en>IT experience abroad, then responsibility in Germany – in operations, in teams and with people.</span></p>
+  <div class="tl">
+    <div class="job reveal">
+      <div class="when"><span data-de>07/2026 – heute</span><span data-en>07/2026 – present</span></div>
+      <h3><span data-de>Betriebsleiter</span><span data-en>Operations Manager</span></h3>
+      <div class="org">VIP Partner Business GmbH · Paderborn · <span data-de>Personenbeförderung</span><span data-en>passenger transport</span></div>
+      <ul>
+        <li><span data-de>Leitung des operativen Betriebs: 10 Fahrzeuge, 16 Mitarbeitende im Schichtbetrieb</span><span data-en>Running daily operations: 10 vehicles, 16 staff in shifts</span></li>
+        <li><span data-de>Schicht- und Einsatzplanung, Arbeitszeitdokumentation, Kassenbuch und Abrechnung</span><span data-en>Shift planning, time tracking, cash book and billing</span></li>
+        <li><span data-de>Digitalisierung der Abläufe mit selbst gebauten Tools (siehe Projekte)</span><span data-en>Digitised internal processes with self-built tools (see projects)</span></li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when"><span data-de>seit 03/2022 · nebenberuflich</span><span data-en>since 03/2022 · part-time</span></div>
+      <h3><span data-de>Sprachmittler</span><span data-en>Community Interpreter</span></h3>
+      <div class="org"><span data-de>Stadt Paderborn (Projekt „Sprachschlüssel“) · Diakonie Paderborn-Höxter</span><span data-en>City of Paderborn ("Sprachschlüssel" project) · Diakonie Paderborn-Höxter</span></div>
+    </div>
+    <div class="job reveal">
+      <div class="when">01/2023 – 12/2025</div>
+      <h3><span data-de>Betreuer in der Flüchtlingshilfe</span><span data-en>Refugee Support Worker</span></h3>
+      <div class="org">Johanniter-Unfall-Hilfe e. V. · Paderborn & Gütersloh</div>
+      <ul>
+        <li><span data-de>Betreuung und Beratung in Notunterkünften, Begleitung zu Behörden und Ärzten</span><span data-en>Support and advice in emergency shelters, accompanying people to authorities and doctors</span></li>
+        <li><span data-de>Erster Ansprechpartner im Schichtdienst, Vermittlung in vier Sprachen</span><span data-en>First point of contact on shift, interpreting in four languages</span></li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="when">06/2020 – 03/2022</div>
+      <h3><span data-de>Mitarbeiter</span><span data-en>Associate</span></h3>
+      <div class="org">Amazon · Diebold Nixdorf</div>
+    </div>
+    <div class="job reveal">
+      <div class="when">04/2014 – 10/2016</div>
+      <h3>Site Engineer</h3>
+      <div class="org">Emirates Technical & Thermal Systems · Abu Dhabi, <span data-de>VAE</span><span data-en>UAE</span></div>
+      <ul>
+        <li><span data-de>Administration und Wartung von Windows-Servern, Clients und Netzwerkkomponenten</span><span data-en>Administered and maintained Windows servers, clients and network components</span></li>
+        <li><span data-de>Benutzer- und Berechtigungsverwaltung im Active Directory</span><span data-en>User and permission management in Active Directory</span></li>
+        <li><span data-de>Betrieb der VMware-Virtualisierung, 1st- und 2nd-Level-Support</span><span data-en>Ran the VMware virtualisation, 1st and 2nd level support</span></li>
+      </ul>
+      <button class="docbtn" onclick="openDoc('etts')">📄 <span data-de>Arbeitszeugnis ansehen</span><span data-en>View employment certificate</span></button>
+    </div>
+  </div>
+</div></section>
+
+<section id="bildung"><div class="wrap">
+  <p class="eyebrow reveal"><span data-de>Bildung & Sprachen</span><span data-en>Education & Languages</span></p>
+  <h2 class="reveal"><span data-de>Fundament und Weiterbildung</span><span data-en>Foundation and training</span></h2>
+  <p class="sub reveal"><span data-de>Ingenieurstudium in der Ukraine, in Deutschland offiziell bewertet – plus gezielte Cloud-Weiterbildung.</span><span data-en>Engineering degree from Ukraine, officially evaluated in Germany – plus focused cloud training.</span></p>
+  <div class="two">
+    <div class="panel reveal">
+      <div class="when" style="font:600 13px Inter;color:var(--az)">2007 – 2013</div>
+      <h3 style="margin-top:6px"><span data-de>Bachelor Computer Engineering & Fachingenieur Computersysteme und -netze</span><span data-en>Bachelor in Computer Engineering & Specialist Degree in Computer Systems and Networks</span></h3>
+      <div class="org"><span data-de>Nationale Technische Universität Saporischschja, Ukraine</span><span data-en>Zaporizhzhia National Technical University, Ukraine</span></div>
+      <p><span data-de>Die ZAB (Kultusministerkonferenz) ordnet den Abschluss als deutschen Hochschulabschluss ein, vom Niveau her zwischen Bachelor und Master.</span><span data-en>The German ZAB (Standing Conference of Education Ministers) rates the degree as a German university degree, at a level between Bachelor and Master.</span></p>
+      <span class="hl">✓ <span data-de>ZAB-Zeugnisbewertung 2020</span><span data-en>ZAB evaluation 2020</span></span><br>
+      <button class="docbtn" onclick="openDoc('zab')">📄 <span data-de>ZAB-Bewertung ansehen</span><span data-en>View ZAB evaluation</span></button>
+    </div>
+    <div class="panel reveal">
+      <h3><span data-de>Weiterbildung</span><span data-en>Further training</span></h3>
+      <div style="margin-top:14px">
+        <div style="font:600 13px Inter;color:var(--aws)">10/2025 – 03/2026</div>
+        <div style="font-weight:600;margin-top:2px">AWS Cloud</div>
+        <div class="org">IBB Institut für Berufliche Bildung AG</div>
+      </div>
+      <div style="margin-top:18px">
+        <div style="font:600 13px Inter;color:var(--az)">09/2022 – 02/2023</div>
+        <div style="font-weight:600;margin-top:2px"><span data-de>System- und Datenbankadministration, Schwerpunkt Azure</span><span data-en>System & database administration, Azure focus</span></div>
+        <div class="org">Comcave.College</div>
+      </div>
+      <div style="margin-top:18px">
+        <div style="font:600 13px Inter;color:var(--ok)">04/2022 – 07/2022</div>
+        <div style="font-weight:600;margin-top:2px"><span data-de>Deutschkurs, Abschluss telc B2</span><span data-en>German course, telc B2 exam</span></div>
+        <div class="org">Sprachwerkstatt Paderborn</div>
+      </div>
+    </div>
+  </div>
+  <div class="panel reveal" style="margin-top:22px">
+    <h3><span data-de>Sprachen</span><span data-en>Languages</span></h3>
+    <div class="langs" style="margin-top:18px">
+      <div class="lrow"><span data-de>Arabisch</span><span data-en>Arabic</span><div class="bar"><i data-w="100"></i></div><small><span data-de>Muttersprache</span><span data-en>Native</span></small></div>
+      <div class="lrow"><span data-de>Englisch</span><span data-en>English</span><div class="bar"><i data-w="88"></i></div><small><span data-de>fließend</span><span data-en>Fluent</span></small></div>
+      <div class="lrow"><span data-de>Russisch</span><span data-en>Russian</span><div class="bar"><i data-w="88"></i></div><small><span data-de>fließend</span><span data-en>Fluent</span></small></div>
+      <div class="lrow"><span data-de>Ukrainisch</span><span data-en>Ukrainian</span><div class="bar"><i data-w="78"></i></div><small><span data-de>sehr gut</span><span data-en>Very good</span></small></div>
+      <div class="lrow"><span data-de>Deutsch</span><span data-en>German</span><div class="bar"><i data-w="70"></i></div><small><button class="mini" style="padding:3px 9px" onclick="openDoc('b2')">telc B2 ↗</button></small></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <p class="eyebrow reveal">Skills</p>
+  <h2 class="reveal"><span data-de>Womit ich arbeite</span><span data-en>What I work with</span></h2>
+  <p class="sub reveal"><span data-de>Klassische Administration und Cloud – dazu der Wille, Abläufe selbst zu automatisieren.</span><span data-en>Classic administration and cloud – plus the drive to automate things myself.</span></p>
+  <div class="skills">
+    <div class="panel reveal"><div class="ico">🖥️</div><h3>Windows & Identity</h3>
+      <div class="tags"><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">DNS</span><span class="tag"><span data-de>Gruppenrichtlinien</span><span data-en>Group Policy</span></span><span class="tag"><span data-de>Rechteverwaltung</span><span data-en>Permissions</span></span><span class="tag">VMware</span></div></div>
+    <div class="panel reveal"><div class="ico" style="background:rgba(255,159,28,.12)">☁️</div><h3>Cloud</h3>
+      <div class="tags"><span class="tag">Azure Compute</span><span class="tag">Azure Networking</span><span class="tag">Storage</span><span class="tag">RBAC</span><span class="tag">AWS EC2</span><span class="tag">S3</span><span class="tag">VPC</span><span class="tag">IAM</span></div></div>
+    <div class="panel reveal"><div class="ico" style="background:rgba(56,211,159,.12)">🛠️</div><h3>Support & Tools</h3>
+      <div class="tags"><span class="tag">1st/2nd Level Support</span><span class="tag"><span data-de>Störungsanalyse</span><span data-en>Troubleshooting</span></span><span class="tag"><span data-de>Netzwerkgrundlagen</span><span data-en>Networking basics</span></span><span class="tag">Git & GitHub</span><span class="tag">Google Workspace</span><span class="tag">Microsoft Office</span></div></div>
+  </div>
+</div></section>
+
+<section id="projekte" style="padding-top:20px"><div class="wrap">
+  <p class="eyebrow reveal"><span data-de>Eigene Projekte</span><span data-en>Side projects</span></p>
+  <h2 class="reveal"><span data-de>Selbst gebaut, im echten Einsatz</span><span data-en>Self-built, used every day</span></h2>
+  <div class="proj" style="margin-top:36px">
+    <div class="panel reveal"><span class="yr">2026</span><div class="ico">📅</div>
+      <h3><span data-de>Dienstplan-Web-App</span><span data-en>Shift-planning web app</span></h3>
+      <p><span data-de>Progressive Web App für die Schichtplanung von 16 Fahrern. Gehostet über GitHub Pages, Sync zwischen Geräten über GitHub Gist.</span><span data-en>Progressive web app for scheduling 16 drivers. Hosted on GitHub Pages, synced across devices via GitHub Gist.</span></p>
+      <div class="tags"><span class="tag">PWA</span><span class="tag">GitHub Pages</span><span class="tag">JavaScript</span></div></div>
+    <div class="panel reveal"><span class="yr">2026</span><div class="ico" style="background:rgba(255,159,28,.12)">🧾</div>
+      <h3><span data-de>Automatische Belegerfassung</span><span data-en>Automated receipt capture</span></h3>
+      <p><span data-de>Tankbelege aus einer WhatsApp-Gruppe werden per KI-API ausgelesen und automatisch in Google Sheets gebucht – mit Monatsauswertung pro Fahrer.</span><span data-en>Fuel receipts posted in a WhatsApp group are read by an AI API and booked into Google Sheets automatically, with a monthly report per driver.</span></p>
+      <div class="tags"><span class="tag">AI API</span><span class="tag">Google Sheets</span><span class="tag">Automation</span></div></div>
+  </div>
+</div></section>
+
+<section id="kontakt"><div class="wrap">
+  <div class="box reveal">
+    <p class="eyebrow"><span data-de>Kontakt</span><span data-en>Contact</span></p>
+    <h2><span data-de>Lassen Sie uns sprechen</span><span data-en>Let's talk</span></h2>
+    <p class="sub" style="margin:0 auto"><span data-de>Ich freue mich über eine Nachricht – für eine Stelle in Paderborn, in OWL oder remote.</span><span data-en>Happy to hear from you – for a role in Paderborn, the OWL region or remote.</span></p>
+    <div class="clist">
+      <a href="mailto:ahmadclh@gmail.com">✉️ ahmadclh@gmail.com</a>
+      <a href="tel:+4917630414742">📞 +49 176 30414742</a>
+      <a href="https://www.linkedin.com/in/ahmad-mosis-352b9bb6/" target="_blank" rel="noopener">in LinkedIn ↗</a>
+      <a href="https://www.credly.com/users/ahmad-mosis" target="_blank" rel="noopener">🏅 Credly ↗</a>
+      <span>📍 Paderborn</span>
+    </div>
+  </div>
+</div></section>
+
+<footer>© 2026 Ahmad Mosis · <span data-de>Paderborn, Deutschland</span><span data-en>Paderborn, Germany</span></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" onclick="if(event.target===this)closeDoc()">
+  <div class="mbox">
+    <div class="mhead"><div><h3 id="mt"></h3><small id="ms"></small></div>
+      <button class="x" onclick="closeDoc()" aria-label="Schließen">✕</button></div>
+    <div class="mbody" id="mb"><img id="mi" alt=""></div>
+    <div class="mfoot">
+      <div class="pager" id="pg"><button id="pv" onclick="page(-1)">‹</button><span id="pn"></span><button id="nx" onclick="page(1)">›</button></div>
+      <span id="hint" style="color:var(--mut)"></span>
+      <a id="ml" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+const DOCS={
+  az104:{t:'Microsoft Certified: Azure Administrator Associate (AZ-104)',de:'Erworben am 04.09.2025',en:'Earned 4 Sep 2025',img:['docs/az-104.jpg'],v:'https://www.credly.com/users/ahmad-mosis',vde:'Auf Credly prüfen ↗',ven:'Verify on Credly ↗'},
+  az305:{t:'Microsoft Certified: Azure Solutions Architect Expert (AZ-305)',de:'Erworben am 05.09.2025',en:'Earned 5 Sep 2025',img:['docs/az-305.jpg'],v:'https://www.credly.com/users/ahmad-mosis',vde:'Auf Credly prüfen ↗',ven:'Verify on Credly ↗'},
+  saa:{t:'AWS Certified Solutions Architect – Associate (SAA-C03)',de:'Ausgestellt 24.03.2026 · gültig bis 24.03.2029',en:'Issued 24 Mar 2026 · valid until 24 Mar 2029',img:['docs/aws-saa.jpg'],v:'https://aws.amazon.com/verification',vde:'Bei AWS verifizieren ↗',ven:'Verify at AWS ↗'},
+  clf:{t:'AWS Certified Cloud Practitioner (CLF-C02)',de:'Ausgestellt 25.03.2026 · gültig bis 25.03.2029',en:'Issued 25 Mar 2026 · valid until 25 Mar 2029',img:['docs/aws-clf.jpg'],v:'https://aws.amazon.com/verification',vde:'Bei AWS verifizieren ↗',ven:'Verify at AWS ↗'},
+  b2:{t:'telc Deutsch B2',de:'Prüfung 22.07.2022 · 224 / 300 Punkte',en:'Exam 22 Jul 2022 · 224 / 300 points',img:['docs/b2.jpg']},
+  zab:{t:'ZAB – Zeugnisbewertung für ausländische Hochschulqualifikationen',de:'Kultusministerkonferenz, Bonn · 15.04.2020',en:'Standing Conference of Education Ministers, Bonn · 15 Apr 2020',img:['docs/zab-1.jpg','docs/zab-2.jpg','docs/zab-3.jpg']},
+  etts:{t:'Emirates Technical & Thermal Systems – Arbeitszeugnis',de:'Abu Dhabi · 04/2014 – 10/2016',en:'Employment certificate · Abu Dhabi · 04/2014 – 10/2016',img:['docs/ets.jpg']}
+};
+let L='de',cur=null,pi=0;
+function setLang(l){L=l;document.documentElement.lang=l;bde.classList.toggle('on',l==='de');ben.classList.toggle('on',l==='en');
+  try{localStorage.setItem('am-lang',l)}catch(e){}
+  if(location.hash==='#de'||location.hash==='#en'||!location.hash){try{history.replaceState(null,'','#'+l)}catch(e){}}
+  if(cur)fill();}
+function fill(){const d=DOCS[cur];mt.textContent=d.t;ms.textContent=d[L];
+  mi.src=d.img[pi];mi.alt=d.t;mb.classList.remove('zoom');mb.scrollTop=0;
+  const n=d.img.length;pg.style.visibility=n>1?'visible':'hidden';pn.textContent=(pi+1)+' / '+n;pv.disabled=pi===0;nx.disabled=pi===n-1;
+  hint.textContent=L==='de'?'Bild anklicken zum Vergrößern':'Click image to zoom';
+  if(d.v){ml.style.display='';ml.href=d.v;ml.textContent=L==='de'?d.vde:d.ven}else ml.style.display='none';}
+function openDoc(k){cur=k;pi=0;fill();modal.classList.add('on');document.body.style.overflow='hidden';}
+function closeDoc(){modal.classList.remove('on');document.body.style.overflow='';cur=null;}
+function page(s){const n=DOCS[cur].img.length;pi=Math.max(0,Math.min(n-1,pi+s));fill();}
+mi.onclick=()=>mb.classList.toggle('zoom');
+addEventListener('keydown',e=>{if(!cur)return;if(e.key==='Escape')closeDoc();if(e.key==='ArrowRight')page(1);if(e.key==='ArrowLeft')page(-1);});
+
+(function(){let l=null;const h=location.hash.slice(1);if(h==='en'||h==='de')l=h;
+  if(!l){try{l=localStorage.getItem('am-lang')}catch(e){}}
+  if(!l)l=(navigator.language||'de').toLowerCase().startsWith('de')?'de':'en';
+  setLang(l);})();
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+  e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* 3D tilt */
+const fine=matchMedia('(pointer:fine)').matches, still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function tilt(el,max){el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  el.style.transform=`rotateY(${(x-.5)*max}deg) rotateX(${(.5-y)*max}deg)`;el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%');});
+  el.addEventListener('pointerleave',()=>el.style.transform='');}
+if(fine&&!still){document.querySelectorAll('.cert').forEach(c=>tilt(c,16));tilt(photo,14);}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* 3D network globe */
+(function(){
+  if(!window.THREE)return;
+  const cv=document.getElementById('globe'),hero=document.getElementById('hero');
+  const R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
+  R.setPixelRatio(Math.min(devicePixelRatio,2));
+  const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(45,1,.1,100);C.position.z=7.2;
+  const G=new THREE.Group();S.add(G);
+  const N=window.innerWidth<700?140:260,pts=[],pos=[];
+  for(let i=0;i<N;i++){const p=Math.acos(1-2*(i+.5)/N),t=Math.PI*(1+Math.sqrt(5))*i;
+    const v=new THREE.Vector3(Math.cos(t)*Math.sin(p),Math.sin(t)*Math.sin(p),Math.cos(p)).multiplyScalar(2.3);pts.push(v);pos.push(v.x,v.y,v.z);}
+  const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+  G.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0x6fb6ff,size:.045,transparent:true,opacity:.9})));
+  const lp=[];for(let i=0;i<N;i++)for(let j=i+1;j<N;j++)if(pts[i].distanceTo(pts[j])<.5)lp.push(pts[i].x,pts[i].y,pts[i].z,pts[j].x,pts[j].y,pts[j].z);
+  const lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
+  G.add(new THREE.LineSegments(lg,new THREE.LineBasicMaterial({color:0x3b9cff,transparent:true,opacity:.18})));
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(3.1,.006,8,160),new THREE.MeshBasicMaterial({color:0xff9f1c,transparent:true,opacity:.45}));
+  ring.rotation.x=1.25;G.add(ring);
+  const ring2=new THREE.Mesh(new THREE.TorusGeometry(3.5,.004,8,160),new THREE.MeshBasicMaterial({color:0x8b7bff,transparent:true,opacity:.35}));
+  ring2.rotation.x=1.9;ring2.rotation.y=.4;G.add(ring2);
+  const sat=new THREE.Mesh(new THREE.SphereGeometry(.06,16,16),new THREE.MeshBasicMaterial({color:0xffb54d}));G.add(sat);
+  let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+  function size(){const w=hero.clientWidth,h=hero.clientHeight;R.setSize(w,h,false);C.aspect=w/h;
+    G.position.x=w>900?1.9:0;G.position.y=w>900?0:1.2;C.updateProjectionMatrix();}
+  size();addEventListener('resize',size);
+  const still=matchMedia('(prefers-reduced-motion:reduce)').matches;let t=0,vis=true;
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(hero);
+  (function loop(){requestAnimationFrame(loop);if(!vis)return;t+=still?0:.004;
+    G.rotation.y=t+mx*.5;G.rotation.x=.25+my*.3;ring.rotation.z=t*1.5;
+    sat.position.set(Math.cos(t*4)*3.1,Math.sin(t*4)*3.1*Math.cos(1.25),Math.sin(t*4)*3.1*Math.sin(1.25));
+    R.render(S,C);})();
+})();
+</script>
+</body>
+</html>
