@@ -119,6 +119,14 @@ h2{font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-.6px;margin-bo
 .panel .org{color:var(--mut);font-size:14px}
 .panel p{color:#c3cbdb;margin-top:12px;font-size:15px}
 .hl{display:inline-block;margin-top:14px;font:600 13px Inter;color:var(--ok);background:rgba(56,211,159,.1);border:1px solid rgba(56,211,159,.3);padding:6px 12px;border-radius:8px}
+.degrees{display:grid;gap:10px;margin-top:18px}
+.deg{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:13px 16px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);transition:.2s}
+.deg:hover{border-color:var(--az);background:rgba(59,156,255,.08)}
+.deg:focus-visible{outline:2px solid var(--az)}
+.dy{font:700 13px Sora;color:var(--az);background:rgba(59,156,255,.12);padding:4px 9px;border-radius:7px}
+.dt{font-weight:600;font-size:15px}
+.dv{font:600 12px Inter;color:var(--az);white-space:nowrap}
+@media(max-width:520px){.deg{grid-template-columns:auto 1fr}.dv{grid-column:2}}
 .langs{display:grid;gap:14px;margin-top:6px}
 .lrow{display:grid;grid-template-columns:110px 1fr auto;gap:14px;align-items:center;font-size:15px}
 .bar{height:6px;border-radius:6px;background:rgba(255,255,255,.07);overflow:hidden}
@@ -335,7 +343,19 @@ footer{padding:36px 0 50px;text-align:center;color:var(--mut);font-size:13px}
       <h3 style="margin-top:6px"><span data-de>Bachelor Computer Engineering & Fachingenieur Computersysteme und -netze</span><span data-en>Bachelor in Computer Engineering & Specialist Degree in Computer Systems and Networks</span></h3>
       <div class="org"><span data-de>Nationale Technische Universität Saporischschja, Ukraine</span><span data-en>Zaporizhzhia National Technical University, Ukraine</span></div>
       <p><span data-de>Die ZAB (Kultusministerkonferenz) ordnet den Abschluss als deutschen Hochschulabschluss ein, vom Niveau her zwischen Bachelor und Master.</span><span data-en>The German ZAB (Standing Conference of Education Ministers) rates the degree as a German university degree, at a level between Bachelor and Master.</span></p>
-      <span class="hl">✓ <span data-de>ZAB-Zeugnisbewertung 2020</span><span data-en>ZAB evaluation 2020</span></span><br>
+      <div class="degrees">
+        <button class="deg" onclick="openDoc('bachelor')">
+          <span class="dy">2012</span>
+          <span class="dt"><span data-de>Bachelor Computer Engineering</span><span data-en>Bachelor in Computer Engineering</span></span>
+          <span class="dv"><span data-de>Diplom ansehen</span><span data-en>View diploma</span> →</span>
+        </button>
+        <button class="deg" onclick="openDoc('specialist')">
+          <span class="dy">2013</span>
+          <span class="dt"><span data-de>Fachingenieur Computersysteme und -netze</span><span data-en>Specialist in Computer Systems and Networks</span></span>
+          <span class="dv"><span data-de>Diplom ansehen</span><span data-en>View diploma</span> →</span>
+        </button>
+      </div>
+      <span class="hl">✓ <span data-de>ZAB-Zeugnisbewertung 2020 · Diplome mit Apostille</span><span data-en>ZAB evaluation 2020 · diplomas with apostille</span></span><br>
       <button class="docbtn" onclick="openDoc('zab')">📄 <span data-de>ZAB-Bewertung ansehen</span><span data-en>View ZAB evaluation</span></button>
     </div>
     <div class="panel reveal">
@@ -425,6 +445,8 @@ const DOCS={
   saa:{t:'AWS Certified Solutions Architect – Associate (SAA-C03)',de:'Ausgestellt 24.03.2026 · gültig bis 24.03.2029',en:'Issued 24 Mar 2026 · valid until 24 Mar 2029',img:['docs/aws-saa.jpg'],v:'https://aws.amazon.com/verification',vde:'Bei AWS verifizieren ↗',ven:'Verify at AWS ↗'},
   clf:{t:'AWS Certified Cloud Practitioner (CLF-C02)',de:'Ausgestellt 25.03.2026 · gültig bis 25.03.2029',en:'Issued 25 Mar 2026 · valid until 25 Mar 2029',img:['docs/aws-clf.jpg'],v:'https://aws.amazon.com/verification',vde:'Bei AWS verifizieren ↗',ven:'Verify at AWS ↗'},
   b2:{t:'telc Deutsch B2',de:'Prüfung 22.07.2022 · 224 / 300 Punkte',en:'Exam 22 Jul 2022 · 224 / 300 points',img:['docs/b2.jpg']},
+  bachelor:{t:'Bachelor’s Diploma – Computer Engineering',de:'Nationale Technische Universität Saporischschja · Abschluss 2012 · Seite 2: Apostille',en:'Zaporizhzhia National Technical University · completed 2012 · page 2: apostille',img:['docs/bachelor.jpg','docs/bachelor-apostille.jpg']},
+  specialist:{t:'Specialist’s Diploma – Computer Systems and Networks',de:'Nationale Technische Universität Saporischschja · Abschluss 2013 · Seite 2: Apostille',en:'Zaporizhzhia National Technical University · completed 2013 · page 2: apostille',img:['docs/specialist.jpg','docs/specialist-apostille.jpg']},
   zab:{t:'ZAB – Zeugnisbewertung für ausländische Hochschulqualifikationen',de:'Kultusministerkonferenz, Bonn · 15.04.2020',en:'Standing Conference of Education Ministers, Bonn · 15 Apr 2020',img:['docs/zab-1.jpg','docs/zab-2.jpg','docs/zab-3.jpg']},
   etts:{t:'Emirates Technical & Thermal Systems – Arbeitszeugnis',de:'Abu Dhabi · 04/2014 – 10/2016',en:'Employment certificate · Abu Dhabi · 04/2014 – 10/2016',img:['docs/ets.jpg']}
 };
